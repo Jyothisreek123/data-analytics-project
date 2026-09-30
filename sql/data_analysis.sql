@@ -16,7 +16,8 @@ select shipping_type,ROUND(avg(purchase_amount),2)
 from customer where shipping_type 
 in ('Standard','Express')
 group by shipping_type;
---5.Do subscribed customer spend more?compare average spend and total revenue between subscribers
+--5.Do subscribed customer spend more?compare average spend and total revenue between 
+--subscribers
 select subscription_status,count(customer_id) as total_customers,
 ROUND(avg(purchase_amount),2) as avg_spend,
 ROUND(SUM(purchase_amount),2) as total_revenue from customer group by
@@ -61,18 +62,3 @@ from customer group by age_group order by total_revenue desc;
 
 
 
---Q1 — Who are the most valuable customers?
---Business question
---Which customer segments contribute the most to total revenue?
---The idea is to identify whether customers who are New,
---Returning, or Loyal contribute differently to the overall
---purchase amount.
-SELECT
-    CASE
-        WHEN previous_purchases = 1 THEN 'New'
-        WHEN previous_purchases BETWEEN 2 AND 10 THEN 'Returning'
-        ELSE 'Loyal'
-    END AS customer_segment,
-    SUM(purchase_amount) AS total_revenue
-FROM customer
-GROUP BY customer_segment;
