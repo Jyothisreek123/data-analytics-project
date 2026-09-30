@@ -106,4 +106,3 @@ data-analytics-project/
 │
 └── sql/
     └── data_analysis.sql
-```text
